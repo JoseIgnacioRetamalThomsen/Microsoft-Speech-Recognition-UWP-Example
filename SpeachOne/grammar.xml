@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<grammar version="1,0"
-         xml:lang="en-us"
+<grammar version="1.0"
+         xml:lang="en-US"
          mode ="voice"
-         xmlns="httt://www.w3.org/2001/06/grammar"
+         xmlns="http://www.w3.org/2001/06/grammar"
          tag-format="semantics/1.0"
-         root="gameoptions">
+         root="gameOptions">
   <rule id="gameOptions">
     <one-of>
       <item>
-        <tag>out.command ="new";</tag>
+        <tag>out.command="new";</tag>
         <one-of>
-          <item>Start a new game</item>
-          <item>Begin a new game</item>
-          <item>Begin a another game</item>
-          <item>Play a new game</item>
-          <item>Play</item>
+          <item>start a new game</item>
+          <item>begin a new game</item>
+          <item>begin a another game</item>
+          <item>play a new game</item>
+          <item>play</item>
         </one-of>
       </item>
       <item>
-        <tag>out.command ="pause";</tag>
+        <tag>out.command="pause";</tag>
         <one-of>
-        <item>Pause the game</item>
-        <item>continue later</item>
+          <item>Pause the game</item>
+          <item>continue later</item>
         </one-of>
       </item>
       <item>
-        <tag>out.command ="quit";</tag>
+        <tag>out.command="quit";</tag>
         <one-of>
           <item>finish this game</item>
           <item>Had Enought</item>

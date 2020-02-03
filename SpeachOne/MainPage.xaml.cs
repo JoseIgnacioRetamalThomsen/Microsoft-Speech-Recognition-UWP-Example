@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Media.SpeechRecognition;
 using Windows.Storage;
+using System.Diagnostics;
 
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -38,15 +39,16 @@ namespace SpeachOne
             //set time
 
             //load grammar file
-            var gf = await StorageFile.GetFileFromApplicationUriAsync(
-                new Uri("ms-appx:///grammar.xml"));
+            var gf = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///grammar.xml"));
 
             //add the constraint to the speach recogniser
             sR.Constraints.Add(new SpeechRecognitionGrammarFileConstraint(gf));
 
             var result = await sR.CompileConstraintsAsync();
-            if(result.Status == SpeechRecognitionResultStatus.Success)
+            Debug.WriteLine(" not start");
+            if (result.Status == SpeechRecognitionResultStatus.Success)
             {
+                Debug.WriteLine("start");
                 while (true)
                 {
                     SpeechRecognitionResult srr = await sR.RecognizeAsync();
@@ -57,6 +59,7 @@ namespace SpeachOne
                     string ruleID = srr.RulePath[0];
                     
                     var md = new Windows.UI.Popups.MessageDialog(myCommand, "User said this " + ruleID);
+                  //  var md = new Windows.UI.Popups.MessageDialog(srr.Text, "User said this ");
                     await md.ShowAsync();
                 }
             }
